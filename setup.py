@@ -19,4 +19,14 @@ setup(
         "Intended Audience :: Developers",
         "Topic :: Database",
     ],
+    requires=[
+        "numpy",
+        "pandas",
+        "attrs",
+        "dataclasses" ,
+        "protobuf >=3.5.0.post1, < 6", # Per https://github.com/grpc/grpc/blob/v1.45.3/requirements.txt
+        "msgpack >=0.5.0", # msgpack 0.5.0 is required for strict_types argument, needed for correct pickling fallback
+        "pyyaml",
+        "packaging"
+    ]
 )

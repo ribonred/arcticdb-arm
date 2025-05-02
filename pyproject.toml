@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arcticdb"
+version = "0.0.0.dev0"
+description = "ArcticDB - with conditional architecture support"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Database",
+]
+
+# Define arcticdb as a dependency - uv will automatically use the appropriate source
+dependencies = [
+    "arcticdb",
+]
+
+# Tell uv which source to use for arcticdb based on platform architecture
+[tool.uv.sources]
+arcticdb = [
+    { git = "https://github.com/ribonred/arcticdb-arm.git", marker = "platform_machine == 'aarch64' or platform_machine == 'arm64'" },
+]
+
+[tool.setuptools]
+packages = ["arcticdb"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"" = ["dist/*.whl"]
